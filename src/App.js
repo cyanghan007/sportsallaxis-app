@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { 
+  BrowserRouter as Router, 
+  Routes, 
+  Route,
+} from 'react-router-dom'
+import Scores from './components/Scores'
+import Score from './components/Score'
+import Edit from './components/EditScore'
+import Nav from './components/Nav'
+import NBA from './components/Nba'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Nav />
+        <h2> NBA-All-Axis </h2>
+        <Routes>
+          <Route path='/' element={<Scores />} />
+          <Route path='/nba' element={<NBA />} />
+          <Route path='/:id' element={<Score />} />
+          <Route path='/:id/edit' element={<Edit />} />
+        </Routes>
+      </Router>
+
     </div>
   );
 }
